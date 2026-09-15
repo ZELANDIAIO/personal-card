@@ -507,3 +507,33 @@
 - 2026-09-13 **El logo mide 48 px de alto con ancho según su proporción (tope 112).** Opción A elegida
   por Johann sobre 48 solo en JPEG o 56 px: un tercio más grande, la ciudad no se trunca y el QR pierde
   12 px en celular solo con logo. Evidencia: `e2e/logo.spec.ts`, comentario en `vista/tarjeta.tsx`.
+
+- 2026-09-14 **Se borran los worktrees y ramas `codex/receptor-acciones` y `codex/receptor-codec`
+  sin fusionar: su contenido ya vive en `main`.** Ambas ramas se crearon antes de que el trabajo de
+  "acciones de contacto" y el rediseño de `codec.ts` con `fflate` entrara a `main` por otra vía (ya
+  incluido en el `main` actual). Verificado con diff de DOS puntos contra la punta real de `main`
+  (`git diff af312ec..codex/receptor-codec` salió vacío; `af312ec..codex/receptor-acciones` mostraba
+  -650/+139, es decir, fusionarla habría BORRADO trabajo ya hecho, no sumado nada). No hay nada
+  pendiente de completar ni que pedirle a Codex : Johann + Opus, tras verificar.
+
+- 2026-09-14 **Mejora por olas: la ola 1 respeta D1; lo que exige servidor va a una ola 2 con plan
+  borrador propio.** Cuentas, foto alojada, eliminar cuenta y miniatura con foto al compartir necesitan
+  base de datos y almacenamiento (Supabase). No se construye en la ola 1 : Johann (P1-1C).
+- 2026-09-14 **Botones de acción opcionales, con destino que elige la persona.** "Agendar" recibe la
+  URL de su propia agenda (Calendly, Cal.com u otra HTTPS); un segundo botón lleva a su encuesta o
+  brief. No se construye agenda ni encuestas. Nombre del segundo botón: pendiente : Johann.
+- 2026-09-14 **El tema claro u oscuro lo elige quien crea la tarjeta.** El claro es cálido y premium,
+  nunca blanco puro, para no encandilar en pantalla : Johann (P4-4A).
+- 2026-09-14 **Todo bloque de la tarjeta es opcional.** Íconos de contacto solo para los canales que
+  la persona llena; si falta un dato, el bloque se omite y el diseño se reacomoda, como ya pasa con la
+  foto : Johann (P5-5B).
+- 2026-09-14 **La foto visible al abrir el enlace llega en la ola 2, no se mete en el fragmento.**
+  Meterla alargaría el enlace y dejaría la foto en una URL irrevocable (contra D5). En la ola 2 va
+  alojada, con enlace corto y borrable al eliminar la cuenta : Johann (D-FOTO F2).
+- 2026-09-14 **El segundo botón se llama "Cuéntame qué necesitas" ("Tell me what you need").** Sirve
+  a cualquier negocio, no promete gratis, tiempo ni precio, y no compite con "Agendar" : Johann
+  (D-NOMBRE opción 1).
+- 2026-09-14 **Cada función opcional del editor lleva una explicación corta: qué hace y qué tipo de
+  página enlazar** (una agenda para "Agendar", una encuesta o formulario para "Cuéntame qué
+  necesitas"). Si la ayuda nombra servicios concretos queda pendiente, se decide viendo variantes :
+  Johann.
